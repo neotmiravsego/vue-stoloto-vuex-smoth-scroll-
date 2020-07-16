@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <Header :class="{'active':!positionHeader}" v-on:scroll="onScroll" />
-    <Banner :class="{'active':!positionBanner}" v-on:scroll="onScroll" />
-    <Navigation ref="navigation" :class="{'active':!positionNav}" v-on:scroll="onScroll" />
+    <Header :class="{'active':!positionHeader}" v-on:scroll="onResize" />
+    <Banner :class="{'active':!positionBanner}" v-on:scroll="onResize" />
+    <Navigation ref="navigation" :class="{'active':!positionNav}" v-on:scroll="onResize" />
     <Posts />
     <Footer />
   </div>
@@ -26,14 +26,26 @@ export default {
   },
   data() {
     return {
-      scrollPosition: null,
+      windowSize: null,
       positionNav: true,
+      scrollPosition: null,
       positionHeader: true,
       positionBanner: true
     };
   },
   methods: {
-    onScroll() {
+    onResize() {
+      this.scrollPosition = window.scrollY;
+      if (document.documentElement.clientWidth > 1024) {
+        this.onScrollDesktop();
+      } else if (document.documentElement.clientWidth > 768) {
+        this.onScrollTablet();
+      } else {
+        this.positionHeader = false;
+        this.onScrollMobile();
+      }
+    },
+    onScrollDesktop() {
       this.scrollPosition = window.scrollY;
       if (this.scrollPosition > 570) {
         this.positionNav = false;
@@ -44,18 +56,43 @@ export default {
         this.positionHeader = true;
         this.positionBanner = true;
       }
+    },
+    onScrollTablet() {
+      this.scrollPosition = window.scrollY;
+      if (window.scrollY > 400) {
+        this.positionHeader = false;
+        this.positionNav = false;
+        this.positionBanner = false;
+      } else {
+        this.positionNav = true;
+        this.positionHeader = true;
+        this.positionBanner = true;
+      }
+    },
+    onScrollMobile() {
+      this.scrollPosition = window.scrollY;
+      if (this.scrollPosition > 100) {
+        this.positionNav = false;
+        this.positionBanner = false;
+      } else {
+        this.positionNav = true;
+        this.positionHeader = false;
+        this.positionBanner = true;
+      }
     }
   },
   created() {
-    window.addEventListener("scroll", this.onScroll);
+    window.addEventListener("scroll", this.onResize);
+    window.addEventListener("resize", this.onResize);
+    this.onResize();
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.onResize);
   }
 };
 </script>
 
 <style lang="scss">
-* {
-  box-sizing: border-box;
-}
 #app {
   position: relative;
   font-family: Roboto;
@@ -63,6 +100,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  @media (max-width: $MidlleWidth - 1px) {
+    overflow: hidden;
+    overflow-x: scroll;
+  }
 }
 body,
 ul,
@@ -79,6 +120,7 @@ h6 {
 ul {
   list-style: none;
 }
+
 a {
   color: black;
   text-decoration: none;
@@ -95,15 +137,47 @@ button {
   width: 100%;
   background: white;
   z-index: 1;
+  @media (max-width: $TableWidth - 1px) {
+    top: 30px;
+  }
+}
+.social-list__item-wrap {
+  &:nth-child(1) {
+    .social-icon {
+      @media (max-width: $TableWidth - 1px) {
+        width: 7px;
+        height: 13px;
+      }
+    }
+  }
+  &:nth-child(2) {
+    .social-icon {
+      @media (max-width: $TableWidth - 1px) {
+        width: 13px;
+        height: 10.74px;
+      }
+    }
+  }
+  &:nth-child(3) {
+    .social-icon {
+      @media (max-width: $TableWidth - 1px) {
+        width: 15px;
+        height: 9.29px;
+      }
+    }
+  }
 }
 .header.active {
   top: 0;
   padding-top: 12px;
   z-index: 5;
+  @media (max-width: $TableWidth - 1px) {
+    padding-top: 0;
+  }
   .social-list__item {
     opacity: 1;
     .social-icon {
-      fill: #ED5E42;
+      fill: #ed5e42;
     }
   }
   &::before {
@@ -113,6 +187,10 @@ button {
     background: #ed5e42;
     z-index: -1;
     height: 69px;
+    @media (max-width: $TableWidth - 1px) {
+      top: 0;
+      height: 40px;
+    }
   }
 }
 // .container-banner.active {

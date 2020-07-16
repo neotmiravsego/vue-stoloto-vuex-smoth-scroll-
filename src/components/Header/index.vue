@@ -78,6 +78,14 @@
   background: transparent;
   transition: 0.3s;
   padding-bottom: 12px;
+  @media (max-width: $MidlleWidth - 1px) {
+    padding-right: 60px;
+    padding-left: 60px;
+  }
+  @media (max-width: $TableWidth - 1px) {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
   &::before {
     content: "";
     height: 0px;
@@ -95,6 +103,10 @@
   max-width: 1080px;
   width: 100%;
   margin: 0 auto;
+  @media (max-width: $MidlleWidth - 1px) {
+    padding-top: 8px;
+    max-width: 100%;
+  }
 }
 .social-list {
   display: flex;
@@ -109,8 +121,13 @@
     }
   }
 }
+
 .logo {
   fill: black;
+  @media (max-width: $TableWidth - 1px) {
+    width: 110px;
+    height: 25px;
+  }
 }
 .social-list__item {
   display: flex;
@@ -120,6 +137,10 @@
   height: 40px;
   justify-content: center;
   align-items: center;
+  @media (max-width: $TableWidth - 1px) {
+    width: 25px;
+    height: 25px;
+  }
   .social-icon {
     fill: #ff9e27;
   }

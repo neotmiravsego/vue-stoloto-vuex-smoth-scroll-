@@ -48,7 +48,7 @@
           </div>
         </div>
       </li>
-      <li class="lists-post__item">
+      <li class="lists-post__item" id="whatWin">
         <div class="post-card">
           <div class="title-content__wrap">
             <h2 class="title-post">Что можно выйграть</h2>
@@ -94,7 +94,7 @@
         </div>
         <div class="card-comment">
           <p
-            class="comment-txt"
+            class="comment-txt comment-section__three"
           >Продажи билетов на воскресный тираж закрываются в субботу в 17:20 по московскому времени.</p>
         </div>
       </li>
@@ -216,12 +216,26 @@ export default {
   margin: 0 auto;
   width: 100%;
   max-width: 740px;
+  @media (max-width: $MidlleWidth - 1px) {
+    padding: 0 48px;
+    // max-width: 648px;
+  }
+  @media (max-width: $MidlleWidth - 1px) {
+    padding: 0 15px;
+  }
 }
 .title-post {
   text-align: left;
   margin-bottom: 30px;
   font-weight: bold;
-  font-size: 36px;
+  font-size: 48px;
+  @media (max-width: $MidlleWidth - 1px) {
+    font-size: 36px;
+  }
+  @media (max-width: $TableWidth - 1px) {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
 }
 .description-title {
   margin-bottom: 40px;
@@ -229,12 +243,25 @@ export default {
   line-height: 28px;
   text-align: justify;
   color: #040404;
+  @media (max-width: $TableWidth - 1px) {
+    font-size: 18px;
+    text-align: left;
+  }
+  @media (max-width: $TableWidth - 1px) {
+    margin-bottom: 25px;
+  }
 }
 .content-txt {
   margin-bottom: 40px;
   line-height: 26px;
   font-size: 18px;
   text-align: justify;
+  @media (max-width: $TableWidth - 1px) {
+    margin-bottom: 30px;
+    text-align: left;
+    font-size: 16px;
+    line-height: 24px;
+  }
 }
 .img-content {
   object-fit: cover;
@@ -248,6 +275,33 @@ export default {
   border-left: 2px solid red;
   line-height: 26px;
   font-weight: bold;
+  @media (max-width: $TableWidth - 1px) {
+    font-size: 15px;
+    padding-right: 0;
+  }
+}
+.comment-section__three {
+  position: relative;
+  border: none;
+  padding: 0;
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    height: 3px;
+    width: 50px;
+    background: #ed5e42;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 0;
+    height: 3px;
+    width: 50px;
+    background: #ed5e42;
+  }
 }
 .comment-link {
   color: #3670f9;
@@ -263,9 +317,13 @@ export default {
   padding-left: 20px;
   margin-top: 14px;
   text-align: left;
+  line-height: 22px;
 }
 .lists-posts__item {
   margin-bottom: 60px;
+  @media (max-width: $TableWidth - 1px) {
+    margin-bottom: 25px;
+  }
 }
 .play-loto {
   background: #ed5e42;
@@ -279,5 +337,17 @@ export default {
   line-height: 28px;
   color: white;
   margin-bottom: 66px;
+}
+.img-wrap__content {
+  display: flex;
+  max-width: 740px;
+  width: 100%;
+  @media (max-width: $MidlleWidth - 1px) {
+    max-width: 650px;
+  }
+}
+.img-content {
+  object-fit: cover;
+  width: 100%;
 }
 </style>

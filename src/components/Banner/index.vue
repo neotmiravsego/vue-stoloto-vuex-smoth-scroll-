@@ -5,7 +5,7 @@
 </template>
 
 <style lang="scss" scoped>
-.container-banner{
+.container-banner {
   height: 640px;
   width: 100%;
   background-image: url("../../assets/img/bg-banner.png");
@@ -16,6 +16,12 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 100px;
+  @media (max-width: $MidlleWidth - 1px) {
+    height: 385px;
+  }
+  @media (max-width: $TableWidth - 1px) {
+    height: 160px;
+  }
 }
 .loto-box {
   margin: 0 auto;
@@ -25,6 +31,15 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  @media (max-width: $MidlleWidth - 1px) {
+    width: 294.15px;
+    height: 185.03px;
+  }
+  @media (max-width: $TableWidth - 1px) {
+    width: 122px;
+    height: 75px;
+     background-position: top;
+  }
 }
 
 .loto-box:hover {
