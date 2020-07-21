@@ -4,7 +4,6 @@
     <Banner :class="{'active':!positionBanner}" v-on:scroll="onResize" />
     <Navigation :class="{'active':!positionNav}" v-on:scroll="onResize" />
     <Posts ref="navigation" />
-    <button class="play-loto">Играть в «Русское лото»</button>
     <Footer />
   </div>
 </template>
@@ -101,20 +100,7 @@ a {
 button {
   cursor: pointer;
 }
-.play-loto {
-  max-width: 743px;
-  padding: 10px 0;
-  margin: 0 auto 66px;
-  background: #ed5e42;
-  width: 100%;
-  text-align: center;
-  border: none;
-  outline: none;
-  font-weight: 300;
-  font-size: 24px;
-  line-height: 28px;
-  color: white;
-}
+
 .navigation-container.active {
   position: fixed;
   top: 65px;
@@ -180,7 +166,4 @@ button {
     }
   }
 }
-// .container-banner.active {
-//   margin-bottom: 120px;
-// }
 </style>

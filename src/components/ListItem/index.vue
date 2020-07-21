@@ -76,6 +76,7 @@ export default {
     margin-bottom: 70px;
   }
   @media (max-width: $TableWidth) {
+    margin-bottom: 22px;
     padding-left: 0;
     &:last-child {
       margin-bottom: 34px;

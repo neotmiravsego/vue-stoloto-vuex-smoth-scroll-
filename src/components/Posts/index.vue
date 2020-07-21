@@ -197,6 +197,7 @@
         </div>
       </li>
     </ul>
+    <button class="play-loto">Играть в «Русское лото»</button>
   </div>
 </template>
 <script>
@@ -343,5 +344,19 @@ export default {
   margin-bottom: 30px;
   text-align: left;
   font-size: 18px;
+}
+.play-loto {
+  max-width: 743px;
+  padding: 10px 0;
+  margin: 0 auto 66px;
+  background: #ed5e42;
+  width: 100%;
+  text-align: center;
+  border: none;
+  outline: none;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 28px;
+  color: white;
 }
 </style>
