@@ -1,6 +1,5 @@
 <template>
-
-  <div class="container" ref="secRef">
+  <div class="container">
     <ul class="list-posts">
       <li class="lists-posts__item">
         <div class="post-card">
@@ -200,20 +199,19 @@
     </ul>
     <button class="play-loto">Играть в «Русское лото»</button>
   </div>
-
 </template>
 
 <script>
 import ListItem from "../ListItem";
 import { mapGetters } from "vuex";
+
 export default {
   components: {
     ListItem
   },
   computed: {
     ...mapGetters(["section_state"])
-  },
-  mounted() {}
+  }
 };
 </script>
 
