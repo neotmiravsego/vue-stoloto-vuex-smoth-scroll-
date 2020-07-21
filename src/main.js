@@ -3,8 +3,6 @@ import App from './App.vue'
 import Vuex from 'vuex';
 import store from './store';
 import VueSmoothScroll from 'vue2-smooth-scroll';
-// import './assets/styles.scss'
-
 Vue.use(VueSmoothScroll)
 Vue.config.productionTip = false
 

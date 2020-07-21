@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" ref="secRef">
     <ul class="list-posts">
       <li class="lists-posts__item">
         <div class="post-card">
@@ -75,7 +75,7 @@
             </div>
           </div>
         </div>
-        <ListItemSection :section_data="section_state.sectionOne" />
+        <ListItem :section_data="section_state.sectionOne" />
         <div class="content__wrap">
           <p
             class="content-txt"
@@ -90,7 +90,7 @@
           <div class="img-wrap__content">
             <img src="../../assets/img/kasse.jpg" alt="Картиночка" class="img-content" />
           </div>
-          <ListItemSection :section_data="section_state.sectionTwo" />
+          <ListItem :section_data="section_state.sectionTwo" />
         </div>
         <div class="card-comment">
           <p
@@ -130,7 +130,7 @@
           <div class="img-wrap__content">
             <img src="../../assets/img/whatPlay.jpg" alt="Картиночка" class="img-content" />
           </div>
-          <ListItemSection :section_data="section_state.sectionThree" />
+          <ListItem :section_data="section_state.sectionThree" />
         </div>
       </li>
       <li class="lists-post__item" id="result">
@@ -152,7 +152,7 @@
               а Михаил Борисов перетаскал такое количество мешков с бочонками, что, по его словам, мог бы вручную перегородить Енисей или построить ГЭС.
             </p>
           </div>
-          <ListItemSection :section_data="section_state.sectionFour" />
+          <ListItem :section_data="section_state.sectionFour" />
         </div>
       </li>
       <li class="lists-post__item" id="get">
@@ -174,9 +174,15 @@
               а Михаил Борисов перетаскал такое количество мешков с бочонками, что, по его словам, мог бы вручную перегородить Енисей или построить ГЭС.
             </p>
           </div>
-          <ListItemSection :section_data="section_state.sectionFive" />
+          <div class="list-section__wrap">
+            <p class="title-list">Где забрать деньги</p>
+            <p
+              class="description-title__list"
+            >В зависимости от суммы есть несколько способов забрать приз:</p>
+            <ListItem :section_data="section_state.sectionFive" />
+          </div>
           <div class="content__wrap">
-            <p class="title-content">Какие налоги придётся заплатить</p>
+            <p class="title-list">Какие налоги придётся заплатить</p>
             <p
               class="content-txt"
             >Налог с выигрыша для россиян составляет 13%. Для нерезидентов РФ — 30%. Если за год вы выиграли не больше 4 000 рублей, ничего платить не нужно.</p>
@@ -191,19 +197,19 @@
         </div>
       </li>
     </ul>
-    <button class="play-loto">Играть в «Русское лото»</button>
   </div>
 </template>
 <script>
-import ListItemSection from "../ListItemSection";
+import ListItem from "../ListItem";
 import { mapGetters } from "vuex";
 export default {
   components: {
-    ListItemSection
+    ListItem
   },
   computed: {
     ...mapGetters(["section_state"])
-  }
+  },
+  mounted() {}
 };
 </script>
 <style lang="scss" scoped>
@@ -218,15 +224,14 @@ export default {
   max-width: 740px;
   @media (max-width: $MidlleWidth - 1px) {
     padding: 0 48px;
-    // max-width: 648px;
   }
   @media (max-width: $MidlleWidth - 1px) {
     padding: 0 15px;
   }
 }
 .title-post {
-  text-align: left;
   margin-bottom: 30px;
+  text-align: left;
   font-weight: bold;
   font-size: 48px;
   @media (max-width: $MidlleWidth - 1px) {
@@ -264,8 +269,9 @@ export default {
   }
 }
 .img-content {
-  object-fit: cover;
   margin-bottom: 40px;
+  object-fit: cover;
+  width: 100%;
 }
 .card-comment {
   text-align: left;
@@ -276,18 +282,19 @@ export default {
   line-height: 26px;
   font-weight: bold;
   @media (max-width: $TableWidth - 1px) {
-    font-size: 15px;
     padding-right: 0;
+    font-size: 15px;
   }
 }
 .comment-section__three {
   position: relative;
   border: none;
   padding: 0;
+  max-width: 570px;
   &::before {
     content: "";
     position: absolute;
-    bottom: -5px;
+    bottom: -22px;
     left: 0;
     height: 3px;
     width: 50px;
@@ -296,7 +303,7 @@ export default {
   &::after {
     content: "";
     position: absolute;
-    top: -5px;
+    top: -22px;
     left: 0;
     height: 3px;
     width: 50px;
@@ -325,29 +332,16 @@ export default {
     margin-bottom: 25px;
   }
 }
-.play-loto {
-  background: #ed5e42;
-  width: 100%;
-  padding: 10px 0;
-  text-align: center;
-  border: none;
-  outline: none;
-  font-weight: 300;
-  font-size: 24px;
-  line-height: 28px;
-  color: white;
-  margin-bottom: 66px;
+
+.title-list {
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: left;
 }
-.img-wrap__content {
-  display: flex;
-  max-width: 740px;
-  width: 100%;
-  @media (max-width: $MidlleWidth - 1px) {
-    max-width: 650px;
-  }
-}
-.img-content {
-  object-fit: cover;
-  width: 100%;
+.description-title__list {
+  margin-bottom: 30px;
+  text-align: left;
+  font-size: 18px;
 }
 </style>

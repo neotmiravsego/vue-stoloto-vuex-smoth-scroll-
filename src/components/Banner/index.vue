@@ -1,21 +1,28 @@
 <template>
-  <div class="container-banner">
+  <div class="container-banner" >
     <div class="loto-box"></div>
   </div>
 </template>
+<script>
+export default {
 
+};
+</script>
 <style lang="scss" scoped>
 .container-banner {
+  position: relative;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 640px;
   width: 100%;
   background-image: url("../../assets/img/bg-banner.png");
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 100px;
+  @media (max-width: $DesktopWidth - 1px) {
+    height: 512px;
+  }
   @media (max-width: $MidlleWidth - 1px) {
     height: 385px;
   }
@@ -25,9 +32,9 @@
 }
 .loto-box {
   margin: 0 auto;
-  background-image: url("../../assets/img/box-banner.png");
   width: 490px;
   height: 308px;
+  background-image: url("../../assets/img/box-banner.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -38,7 +45,10 @@
   @media (max-width: $TableWidth - 1px) {
     width: 122px;
     height: 75px;
-     background-position: top;
+    background-position: top;
+    position: absolute;
+    top: 60%;
+    transform: translateY(-50%);
   }
 }
 

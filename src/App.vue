@@ -2,8 +2,9 @@
   <div id="app">
     <Header :class="{'active':!positionHeader}" v-on:scroll="onResize" />
     <Banner :class="{'active':!positionBanner}" v-on:scroll="onResize" />
-    <Navigation ref="navigation" :class="{'active':!positionNav}" v-on:scroll="onResize" />
-    <Posts />
+    <Navigation :class="{'active':!positionNav}" v-on:scroll="onResize" />
+    <Posts ref="navigation" />
+    <button class="play-loto">Играть в «Русское лото»</button>
     <Footer />
   </div>
 </template>
@@ -36,18 +37,7 @@ export default {
   methods: {
     onResize() {
       this.scrollPosition = window.scrollY;
-      if (document.documentElement.clientWidth > 1024) {
-        this.onScrollDesktop();
-      } else if (document.documentElement.clientWidth > 768) {
-        this.onScrollTablet();
-      } else {
-        this.positionHeader = false;
-        this.onScrollMobile();
-      }
-    },
-    onScrollDesktop() {
-      this.scrollPosition = window.scrollY;
-      if (this.scrollPosition > 570) {
+      if (this.scrollPosition >= this.$refs.navigation.$el.offsetTop - 150) {
         this.positionNav = false;
         this.positionHeader = false;
         this.positionBanner = false;
@@ -56,38 +46,18 @@ export default {
         this.positionHeader = true;
         this.positionBanner = true;
       }
-    },
-    onScrollTablet() {
-      this.scrollPosition = window.scrollY;
-      if (window.scrollY > 400) {
+      if (document.documentElement.clientWidth < 768) {
         this.positionHeader = false;
-        this.positionNav = false;
-        this.positionBanner = false;
-      } else {
-        this.positionNav = true;
-        this.positionHeader = true;
-        this.positionBanner = true;
-      }
-    },
-    onScrollMobile() {
-      this.scrollPosition = window.scrollY;
-      if (this.scrollPosition > 100) {
-        this.positionNav = false;
-        this.positionBanner = false;
-      } else {
-        this.positionNav = true;
-        this.positionHeader = false;
-        this.positionBanner = true;
       }
     }
   },
-  created() {
+  beforeDestroy() {
+    window.removeEventListener("resize", this.onResize);
+  },
+  mounted() {
     window.addEventListener("scroll", this.onResize);
     window.addEventListener("resize", this.onResize);
     this.onResize();
-  },
-  beforeDestroy() {
-    window.removeEventListener("resize", this.onResize);
   }
 };
 </script>
@@ -131,9 +101,23 @@ a {
 button {
   cursor: pointer;
 }
+.play-loto {
+  max-width: 743px;
+  padding: 10px 0;
+  margin: 0 auto 66px;
+  background: #ed5e42;
+  width: 100%;
+  text-align: center;
+  border: none;
+  outline: none;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 28px;
+  color: white;
+}
 .navigation-container.active {
   position: fixed;
-  top: 60px;
+  top: 65px;
   width: 100%;
   background: white;
   z-index: 1;
@@ -168,9 +152,12 @@ button {
   }
 }
 .header.active {
-  top: 0;
   padding-top: 12px;
+  top: 0;
   z-index: 5;
+  @media (max-width: $MidlleWidth - 1px) {
+    padding-top: 0;
+  }
   @media (max-width: $TableWidth - 1px) {
     padding-top: 0;
   }

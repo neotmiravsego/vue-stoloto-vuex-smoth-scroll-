@@ -70,7 +70,7 @@
 
 <style lang="scss">
 .header {
-  padding-top: 44px;
+  padding: 44px 20px 0;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -78,7 +78,7 @@
   background: transparent;
   transition: 0.3s;
   padding-bottom: 12px;
-  @media (max-width: $MidlleWidth - 1px) {
+  @media (max-width: $DesktopWidth - 1px) {
     padding-right: 60px;
     padding-left: 60px;
   }
@@ -94,7 +94,7 @@
     bottom: 0;
     position: absolute;
     z-index: -1;
-    transition: all 0.2s;
+    transition: ease-in-out all 0.2s;
   }
 }
 .header-content__wrap {
