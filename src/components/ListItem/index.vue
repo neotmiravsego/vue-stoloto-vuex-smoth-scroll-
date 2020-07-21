@@ -1,5 +1,4 @@
 <template>
-
   <div class="container-section" ref="wrapImg">
     <ul class="section-list">
       <li class="section-list__item" v-for="(item,index)  in section_data" :key="item.id">
@@ -21,7 +20,6 @@
       </li>
     </ul>
   </div>
-  
 </template>
 
 <script>
@@ -54,7 +52,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 .wrap-content {
   position: relative;
 }
@@ -128,9 +126,10 @@ export default {
   @media (max-width: $TableWidth) {
     margin-top: 12px;
   }
-}
-a {
-  color: #3670f9;
+  a {
+    color: #3670f9;
+    text-decoration: underline;
+  }
 }
 .wrap-title {
   position: relative;
