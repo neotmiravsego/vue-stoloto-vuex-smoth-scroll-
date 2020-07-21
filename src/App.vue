@@ -1,13 +1,11 @@
 <template>
-
   <div id="app">
-    <Header :class="{'active':!headerIsFixed}" v-on:scroll="onResize" />
-    <Banner :class="{'active':!IsBannerFixed}" v-on:scroll="onResize" />
-    <Navigation :class="{'active':!isFixed}" v-on:scroll="onResize" />
+    <Header :class="{'active':headerIsFixed}" v-on:scroll="onResize" />
+    <Banner :class="{'active':IsBannerFixed}" v-on:scroll="onResize" />
+    <Navigation :class="{'active':isFixed}" v-on:scroll="onResize" />
     <Posts ref="navigation" />
     <Footer />
   </div>
-  
 </template>
 
 <script>
@@ -30,25 +28,25 @@ export default {
     return {
       windowSize: null,
       scrollPosition: null,
-      isFixed: true,
-      headerIsFixed: true,
-      IsBannerFixed: true
+      isFixed: false,
+      headerIsFixed: false,
+      IsBannerFixed: false
     };
   },
   methods: {
     onResize() {
       this.scrollPosition = window.scrollY;
       if (this.scrollPosition >= this.$refs.navigation.$el.offsetTop - 150) {
-        this.isFixed = false;
-        this.headerIsFixed = false;
-        this.IsBannerFixed = false;
-      } else {
         this.isFixed = true;
         this.headerIsFixed = true;
         this.IsBannerFixed = true;
+      } else {
+        this.isFixed = false;
+        this.headerIsFixed = false;
+        this.IsBannerFixed = false;
       }
       if (document.documentElement.clientWidth < 768) {
-        this.headerIsFixed = false;
+        this.headerIsFixed = true;
       }
     }
   },

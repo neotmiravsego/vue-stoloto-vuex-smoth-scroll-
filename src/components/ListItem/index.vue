@@ -1,5 +1,4 @@
 <template>
-
   <div class="container-section" ref="wrapImg">
     <ul class="section-list">
       <li class="section-list__item" v-for="(item,index)  in section_data" :key="item.id">
@@ -42,6 +41,9 @@ export default {
         this.visibilityBlock = true;
       }
     }
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.visImgItem);
   },
   mounted() {
     window.addEventListener("scroll", this.visImgItem);
