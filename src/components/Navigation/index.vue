@@ -105,7 +105,6 @@ export default {
   data() {
     return {
       slickOptions: {
-        arrows: false,
         variableWidth: true,
         responsive: [
           {
