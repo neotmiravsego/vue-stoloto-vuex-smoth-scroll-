@@ -1,4 +1,5 @@
 <template>
+
   <div class="container-section" ref="wrapImg">
     <ul class="section-list">
       <li class="section-list__item" v-for="(item,index)  in section_data" :key="item.id">
@@ -20,6 +21,7 @@
       </li>
     </ul>
   </div>
+  
 </template>
 
 <script>

@@ -1,4 +1,5 @@
 <template>
+
   <div class="container">
     <ul class="list-posts">
       <li class="lists-posts__item">
@@ -199,6 +200,7 @@
     </ul>
     <button class="play-loto">Играть в «Русское лото»</button>
   </div>
+  
 </template>
 
 <script>
