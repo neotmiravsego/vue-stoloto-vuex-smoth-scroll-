@@ -147,10 +147,6 @@ const store = new Vuex.Store({
             }]
         },
     },
-    mutations: {
-    },
-    actions: {
-    },
     getters: {
         section_state(state) {
             return state.list;
