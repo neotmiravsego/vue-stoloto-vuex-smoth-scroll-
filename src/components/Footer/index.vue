@@ -1,10 +1,13 @@
 <template>
+
   <footer class="footer">
     <div class="logo-footer">
       <img src="../../assets/img/lifehacker.svg" alt class="img-footer" />
     </div>
   </footer>
+  
 </template>
+
 <style lang="scss">
 .footer {
   position: relative;

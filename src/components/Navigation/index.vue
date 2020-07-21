@@ -1,4 +1,5 @@
 <template>
+
   <div class="navigation-container">
     <ul class="list-navigation desktop-navigation">
       <li class="list-navigation__item">
@@ -91,7 +92,9 @@
       </Slick>
     </ul>
   </div>
+
 </template>
+
 <script>
 import Slick from "vue-slick";
 import "slick-carousel/slick/slick.css";
@@ -124,6 +127,7 @@ export default {
   }
 };
 </script>
+
 <style lang="scss" scoped>
 .desktop-navigation {
   display: flex;

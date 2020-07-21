@@ -1,4 +1,5 @@
 <template>
+
   <div class="container" ref="secRef">
     <ul class="list-posts">
       <li class="lists-posts__item">
@@ -199,7 +200,9 @@
     </ul>
     <button class="play-loto">Играть в «Русское лото»</button>
   </div>
+
 </template>
+
 <script>
 import ListItem from "../ListItem";
 import { mapGetters } from "vuex";
@@ -213,6 +216,7 @@ export default {
   mounted() {}
 };
 </script>
+
 <style lang="scss" scoped>
 .lists-post__item {
   .card-comment {

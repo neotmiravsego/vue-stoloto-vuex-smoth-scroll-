@@ -1,13 +1,11 @@
 <template>
-  <div class="container-banner" >
+
+  <div class="container-banner">
     <div class="loto-box"></div>
   </div>
-</template>
-<script>
-export default {
+  
+</template> 
 
-};
-</script>
 <style lang="scss" scoped>
 .container-banner {
   position: relative;

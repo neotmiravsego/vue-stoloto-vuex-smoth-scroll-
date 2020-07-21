@@ -1,4 +1,5 @@
 <template>
+
   <div class="container-section" ref="wrapImg">
     <ul class="section-list">
       <li class="section-list__item" v-for="(item,index)  in section_data" :key="item.id">
@@ -21,6 +22,7 @@
     </ul>
   </div>
 </template>
+
 <script>
 export default {
   props: {
@@ -47,6 +49,7 @@ export default {
   }
 };
 </script>
+
 <style lang="scss" scoped>
 .wrap-content {
   position: relative;

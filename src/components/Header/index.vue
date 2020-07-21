@@ -1,4 +1,5 @@
 <template>
+
   <header class="header">
     <div class="header-content__wrap">
       <div class="logo-block">
@@ -66,6 +67,7 @@
       </div>
     </div>
   </header>
+  
 </template>
 
 <style lang="scss">
